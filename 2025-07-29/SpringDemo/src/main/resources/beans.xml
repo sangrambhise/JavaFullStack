@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ <bean id="department" class="com.wipro.SpringDemo.Department">
+        <property name="deptCode" value="Fin"/>
+        <property name="departmentName" value="Finance"/>
+    </bean>
+
+    <bean id="college" class="com.wipro.SpringDemo.College">
+        <constructor-arg value="ABC College"/>
+        <constructor-arg ref="department"/>
+    </bean>
+
+</beans>

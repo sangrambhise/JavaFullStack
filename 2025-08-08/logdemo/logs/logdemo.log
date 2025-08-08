@@ -1,0 +1,2 @@
+2025-08-08T12:14:43.418+05:30 ERROR 330920 --- [logdemo] [http-nio-8080-exec-2] c.w.logdemo.controller.LogController     : --Error--
+2025-08-08T12:14:43.419+05:30  WARN 330920 --- [logdemo] [http-nio-8080-exec-2] c.w.logdemo.controller.LogController     : --WARN--
