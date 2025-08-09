@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wipro.riderservice.constants.KafkaTopics;
-import com.wipro.riderservice.dto.RideRequest;
+import com.wipro.shared.dto.RideRequest;
 import com.wipro.riderservice.service.RiderService;
 
 @RestController
@@ -27,8 +27,10 @@ public class RiderController {
     @PostMapping("/book")
     public ResponseEntity<String> bookRide(@RequestBody RideRequest request) {
         riderService.bookRide(request);
-        System.out.println("Ride request received in controller: " + request);
+        System.out.println("Ride request received: " + request);
         return ResponseEntity.ok("Ride request submitted successfully with id: " + request.getId());
     }
+    
+    
 }
 

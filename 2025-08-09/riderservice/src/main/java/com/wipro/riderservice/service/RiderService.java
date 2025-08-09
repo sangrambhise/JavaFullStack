@@ -9,7 +9,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.wipro.riderservice.dto.RideRequest;
+import com.wipro.riderservice.constants.KafkaTopics;
+import com.wipro.shared.dto.RideRequest;
 import com.wipro.riderservice.entity.Ride;
 import com.wipro.riderservice.repo.RiderRepo;
 
@@ -32,20 +33,23 @@ public class RiderService {
         Ride saved = riderRepo.save(ride);
         request.setId(saved.getId());
 
-        kafkaTemplate.send("RIDER_TO_UBER", request);
+        kafkaTemplate.send(KafkaTopics.RIDER_TO_UBER, request);
         System.out.println("Sent ride request to Kafka: " + request);
     }
 
-    @KafkaListener(topics = "UBER_TO_RIDER", groupId = "rider_group")
+    @KafkaListener(topics = KafkaTopics.UBER_TO_RIDER, groupId = "rider-service-group")
     public void receiveRideStatus(RideRequest response) {
-        Ride ride = riderRepo.findById(response.getId()).orElse(null);
+    	System.out.println("Received ride status: " + response);
+    	Ride ride = riderRepo.findById(response.getId()).orElse(null);
         if (ride != null) {
             ride.setRideAccepted(response.isRideAccepted());
+            ride.setPrice(response.getPrice()); 
             riderRepo.save(ride);
             System.out.println("Uber accepted your ride: " + response);
         } else {
             System.out.println("Ride not found for id: " + response.getId());
         }
     }
+
 
 }

@@ -22,4 +22,5 @@ public class Ride {
     private String dropLocation;
     private boolean rideAccepted;
     private LocalDate requestTime;
+    private double price;
 }

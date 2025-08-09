@@ -1,8 +1,6 @@
-package com.wipro.riderservice.dto;
+package com.wipro.shared.dto;
 import java.time.LocalDate;
-
-import lombok.*;
-
+import lombok.Data;
 @Data
 public class RideRequest {
     private int id;
@@ -11,4 +9,5 @@ public class RideRequest {
     private String dropLocation;
     private boolean rideAccepted;
     private LocalDate requestTime;
+    private double price;
 }
