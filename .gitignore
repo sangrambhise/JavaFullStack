@@ -4,3 +4,16 @@
 target/
 .DS_Store
 Thumbs.db
+.metadata/
+logs/
+work/
+ehthumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.env
+.mvn/wrapper/maven-wrapper.jar
+!**/src/**/maven-wrapper.properties
