@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Landing Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to right, #f1f3f6, #dde3ea);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .card img {
+      max-height: 250px;
+      object-fit: contain;
+    }
+    .circle {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .rating-stars {
+      color: #f1c40f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid p-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
+    <h4 class="fw-bold">nitec.</h4>
+    <div class="input-group w-100 w-md-50">
+      <input type="text" class="form-control" placeholder="Search products..." />
+      <button class="btn btn-dark">🔍</button>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle" width="40" height="40" alt="Profile">
+      <span>Ryman Alex</span>
+    </div>
+  </div>
+
+  <div class="container px-4">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card p-4 h-100">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+              <small class="text-muted">🎧 Experience Sound</small>
+              <h4>Nova Studio Wireless Headphones</h4>
+              <p class="mb-1">Immersive audio, sleek design</p>
+              <p class="text-muted small">
+                Active noise cancellation, 30h battery, touch controls.
+              </p>
+              <ul class="small">
+                <li>Stereo sound, deep bass</li>
+                <li>Memory foam ear cups</li>
+                <li>Bluetooth 5.2</li>
+                <li>Built-in mic</li>
+              </ul>
+              <a href="#" class="btn btn-dark btn-sm">Explore Now</a>
+              <div class="mt-3">
+                <a href="#" class="me-2 text-dark"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="me-2 text-dark"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="me-2 text-dark"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-dark"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+            <div class="col-md-6 text-center">
+              <img src="https://cdn.pixabay.com/photo/2018/08/14/13/23/headphones-3605981_1280.jpg" class="img-fluid" alt="Headphones">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 d-flex flex-column gap-4">
+        <div class="card p-3">
+          <h6>Popular Colors</h6>
+          <div class="d-flex mb-2">
+            <div class="circle bg-primary"></div>
+            <div class="circle bg-danger"></div>
+            <div class="circle bg-success"></div>
+            <div class="circle bg-warning"></div>
+            <div class="circle bg-purple" style="background-color: #9b59b6;"></div>
+          </div>
+          <p class="small text-muted mb-1">Match your vibe with colors.</p>
+          <ul class="small">
+            <li>Custom finishes</li>
+            <li>Limited editions</li>
+            <li>Eco-friendly dyes</li>
+          </ul>
+        </div>
+
+        <div class="card p-3 text-center">
+          <img src="https://cdn.pixabay.com/photo/2020/11/28/01/29/headphones-5784962_1280.jpg" class="img-fluid mb-2" alt="Earbuds">
+          <h6>ZenPods Wireless Earbuds</h6>
+          <p class="small text-muted">Compact, quality sound, 8h battery.</p>
+          <a href="#" class="btn btn-outline-dark btn-sm">Shop Now</a>
+        </div>
+
+        <div class="card p-3 text-center">
+          <img src="https://cdn.pixabay.com/photo/2022/12/15/22/58/ai-generated-7658196_1280.jpg" class="img-fluid mb-2" alt="VR">
+          <h6>Immersia VR Experience</h6>
+          <small class="text-muted">Step into the future</small>
+          <p class="small">HD worlds with motion tracking.</p>
+          <ul class="small text-start px-3">
+            <li>Motion tracking</li>
+            <li>Ergonomic fit</li>
+            <li>Multi-platform</li>
+          </ul>
+          <a href="#" class="btn btn-outline-dark btn-sm">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 g-4">
+      <div class="col-12">
+        <h5>More Products <small class="text-muted">(460+)</small></h5>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center p-3">
+          <img src="https://cdn.pixabay.com/photo/2016/11/29/12/54/apple-1867762_1280.jpg" class="img-fluid mb-2" alt="Watch">
+          <p class="fw-semibold">Pulse Smart Watch</p>
+          <p class="small text-muted">Fitness, heart rate, notifications.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center p-3">
+          <p class="fw-semibold text-muted mb-1">5M+ Downloads</p>
+          <div class="rating-stars">★★★★☆</div>
+          <p class="mb-1">4.6 reviews</p>
+          <small class="text-muted">Highly rated for simplicity & accuracy.</small>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center p-3">
+          <span class="badge bg-danger mb-2">Popular</span>
+          <p class="fw-semibold mb-1">Sonic Beats Pro</p>
+          <p class="small text-muted">Studio sound, bass, noise cancel.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center p-3">
+          <img src="https://cdn.pixabay.com/photo/2022/11/22/18/39/gaming-headset-7609702_1280.jpg" class="img-fluid mb-2" alt="Gaming Headset">
+          <p class="fw-semibold">EchoX Gaming Headset</p>
+          <p class="small text-muted">Surround, mic, comfort fit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
