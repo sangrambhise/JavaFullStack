@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="ex13.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="email">Email:</label>
+      <input type="text" id="email" onblur="validEmail()" />
+      <span id="emailError" class="error"></span>
+      <label for="password">Password:</label>
+      <input type="password" id="password" onblur="validPass()" />
+      <span id="passwordError" class="error"></span>
+      <button type="button" onclick="handleLogin()">Login</button>
+    </form>
+  </div>
+  <script src="ex13.js"></script>
+</body>
+</html>
