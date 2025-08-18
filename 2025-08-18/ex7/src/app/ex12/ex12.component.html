@@ -1,0 +1,11 @@
+<!-- Ex12 -->
+<div>
+  <button  (click)="loadCountries()">Load</button>
+  <select>
+    <option value="">Select a country</option>
+    @for (country of countries; track country) {
+      <option value="country">{{ country }}</option>
+    }
+  </select>
+</div>
+<br>

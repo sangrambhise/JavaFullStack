@@ -1,0 +1,19 @@
+<!-- Ex11 -->
+  <div>
+    <div>
+    <input
+      type="checkbox"
+      [(ngModel)]="showMessage"
+    />
+   
+    <label for="toggleCheckbox">
+      Show Message
+    </label>
+  </div>
+  @if (showMessage) {
+    <div>
+      toggeled
+    </div>
+  }
+   <br>
+</div>

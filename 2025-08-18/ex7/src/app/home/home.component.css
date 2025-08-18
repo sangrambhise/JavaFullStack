@@ -1,0 +1,15 @@
+.book-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  width: 18%;
+  margin: 1%;
+}
+
+.book-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+}

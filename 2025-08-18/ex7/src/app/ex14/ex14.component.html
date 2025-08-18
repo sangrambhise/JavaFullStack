@@ -1,0 +1,14 @@
+<!-- Ex14 -->
+<div>
+  <input
+    type="text"
+    [(ngModel)]="search"
+    placeholder="Search names..."
+  />
+  <select size="6">
+    @for (name of filteredNames; track name) {
+      <option>{{ name }}</option>
+    }
+  </select>
+</div>
+<br>
