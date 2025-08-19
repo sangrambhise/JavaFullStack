@@ -1,0 +1,10 @@
+<!-- Ex8 -->
+<div>
+  <input [(ngModel)]="newDescription" placeholder="Task Description" />
+<select [(ngModel)]="newCategory">
+  @for (cat of categories; track cat) {
+    <option [value]="cat">{{ cat }}</option>
+  }
+</select>
+  <button (click)="addTask()">Add Task</button>
+</div>

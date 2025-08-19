@@ -1,0 +1,38 @@
+<!-- Ex1 -->
+<!-- <div class="container mt-4">
+  <div class="row g-4">
+    @if (fruits.length) {
+      @for (fruit of fruits; track fruit.name) {
+        <div class="col-md-4 d-flex">
+          <div class="card w-100 d-flex flex-column h-100">
+            <img [src]="fruit.image" class="card-img-top" alt="{{ fruit.name }}" style="height: 250px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ fruit.name }}</h5>
+              <p class="card-text">{{ fruit.description }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div> -->
+
+<!-- Ex5 -->
+<div class="container mt-4">
+  <div class="row g-4">
+    @for (fruit of fruits; track fruit.name) {
+  <div class="col-md-4 d-flex">
+    <app-fruit
+      [name]="fruit.name"
+      [image]="fruit.image"
+      [description]="fruit.description">
+    </app-fruit>
+  </div>
+}
+
+  </div>
+</div>
+
+
+
+

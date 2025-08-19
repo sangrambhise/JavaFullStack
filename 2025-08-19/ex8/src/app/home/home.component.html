@@ -1,0 +1,6 @@
+<!-- Ex8 -->
+<h2>Task Manager</h2>
+<app-tasklist (add)="addTask($event)"></app-tasklist>
+<hr />
+@for (t of tasks; track t.id) {
+<app-task [task]="t" (delete)="deleteTask(t.id!)"></app-task>}

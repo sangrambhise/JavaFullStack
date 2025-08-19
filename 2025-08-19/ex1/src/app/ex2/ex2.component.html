@@ -1,0 +1,16 @@
+<!-- Ex2 -->
+<div [ngClass]="'blue-box'">
+    String syntax
+</div>
+
+<div [ngClass]="['blue-box', 'italic-text']">
+  Array syntax
+</div>
+
+<div [ngClass]="{'blue-box': flag1, 'italic-text': flag2}">
+  Object syntax
+</div>
+
+<button (click)="toggleFlag1()">Toggle Blue Background</button>
+<button (click)="toggleFlag2()">Toggle Italic Text</button>
+<br>

@@ -1,0 +1,14 @@
+<!-- Ex4 -->
+<div [ngStyle]="{
+  'color': textColor,
+  'font-size': fontSize,
+  'font-weight': isBold ? 'bold' : 'normal'
+}">
+we used ngStyle with component variables
+</div>
+<br>
+<div [ngStyle]="getStyles()">
+method used to get dynamic styles
+</div>
+<br>
+<button (click)="toggleStyle()">Toggle Styles</button>

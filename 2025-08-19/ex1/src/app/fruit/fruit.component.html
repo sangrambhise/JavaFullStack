@@ -1,0 +1,11 @@
+<!-- Ex5 -->
+<div class="card w-100 d-flex flex-column h-100">
+  <img [src]="fruit.image" class="card-img-top" alt="{{ fruit.name }}" style="height: 250px; object-fit: cover;">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">{{ fruit.name }}</h5>
+    <p class="card-text">{{ fruit.description }}</p>
+    <!-- Ex7  -->
+    <button (click)="onRemove()" class="btn btn-danger">Remove</button>
+</div>
+</div>
+

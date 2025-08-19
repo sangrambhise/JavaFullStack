@@ -1,0 +1,43 @@
+<!-- Ex1 -->
+<!-- <h2>Fruit List</h2>
+<app-display-list></app-display-list> -->
+
+<!-- Ex5 -->
+ <!-- <div class="container mt-4">
+  <div class="row g-4">
+    @for (fruit of fruits; track fruit.name) {
+      <div class="col-md-4 d-flex">
+        <app-fruit
+          [name]="fruit.name"
+          [image]="fruit.image"
+          [description]="fruit.description">
+        </app-fruit>
+      </div>
+    }
+  </div>
+</div> -->
+
+<!-- Ex6 -->
+ <!-- <div class="container mt-4">
+  <div class="row g-4">
+    @for (fruit of fruits; track fruit.name) {
+      <div class="col-md-4 d-flex">
+        <app-fruit [fruit]="fruit"></app-fruit>
+      </div>
+    }
+  </div>
+</div> -->
+
+<!-- Ex7 -->
+ <div class="container mt-4">
+  <div class="row g-4">
+    @for (fruit of fruits; track fruit.name) {
+      <div class="col-md-4 d-flex">
+        <app-fruit 
+          [fruit]="fruit" 
+          (removeFruit)="removeFruit($event)">
+        </app-fruit>
+      </div>
+    }
+  </div>
+</div>
