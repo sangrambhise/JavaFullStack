@@ -1,0 +1,6 @@
+<!-- Ex3 -->
+ <h2>Celsius to Fahrenheit Converter</h2>
+<input type="number" [(ngModel)]="tempCelsius" placeholder="Enter °C" />
+<p *ngIf="tempCelsius !== null">
+  Fahrenheit: {{ tempCelsius | ctof }}
+</p>

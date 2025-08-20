@@ -1,0 +1,5 @@
+<!-- Ex2 -->
+<input type="date" [(ngModel)]="selectedDate" />
+<p *ngIf="selectedDate">
+  Selected Date: {{ selectedDate | date: 'short' }}
+</p>
