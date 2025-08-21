@@ -1,0 +1,18 @@
+{
+  "vehicles": [
+    {
+      "id": "1",
+      "make": "Bugatti",
+      "fuelType": "premium gasoline",
+      "model": "Chiron",
+      "price": 2700000
+    },
+    {
+      "id": "0b09",
+      "make": "Ford",
+      "fuelType": "Electric",
+      "model": "F-150",
+      "price": 3500000
+    }
+  ]
+}

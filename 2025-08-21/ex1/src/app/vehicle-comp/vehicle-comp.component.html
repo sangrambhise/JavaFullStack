@@ -1,0 +1,43 @@
+<!-- Ex2 -->
+<!-- <h2>Vehicle List</h2>
+@if (vehicles.length > 0) {
+  <ul>
+@for (vehicle of vehicles; track $index) {
+      <li>
+        {{ vehicle.make }} - {{ vehicle.model }} - {{ vehicle.fuelType }} - ${{ vehicle.price }}
+      </li>
+    }
+  </ul>
+} @else {
+  <p>No vehicles found.</p>
+} -->
+
+<!-- Ex3 -->
+<h2>Vehicle List</h2>
+<div>
+  <h3>{{ isEditMode ? 'Edit' : 'Add' }} Vehicle</h3>
+  <form (submit)="onSubmit()">
+    <input type="text" placeholder="Make" [(ngModel)]="vehicleForm.make" name="make" required />
+    <input type="text" placeholder="Model" [(ngModel)]="vehicleForm.model" name="model" required />
+    <input type="text" placeholder="Fuel Type" [(ngModel)]="vehicleForm.fuelType" name="fuelType" required />
+    <input type="number" placeholder="Price" [(ngModel)]="vehicleForm.price" name="price" required />
+
+    <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+    <button type="button" (click)="resetForm()" *ngIf="isEditMode">Cancel</button>
+  </form>
+</div>
+<hr />
+
+@if (vehicles.length > 0) {
+  <ul>
+    @for (vehicle of vehicles; track vehicle.id) {
+      <li>
+        {{ vehicle.make }} - {{ vehicle.model }} - {{ vehicle.fuelType }} - ${{ vehicle.price }}
+        <button (click)="onEdit(vehicle)">Edit</button>
+        <button (click)="onDelete(vehicle.id)">Delete</button>
+      </li>
+    }
+  </ul>
+} @else {
+  <p>No vehicles found.</p>
+}
