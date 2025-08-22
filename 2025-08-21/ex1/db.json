@@ -13,6 +13,13 @@
       "fuelType": "Electric",
       "model": "F-150",
       "price": 3500000
+    },
+    {
+      "id": "42a8",
+      "make": "Mahindra",
+      "model": "Scorpio",
+      "fuelType": "Petrol",
+      "price": 1300000
     }
   ]
 }

@@ -1,0 +1,8 @@
+<!-- Ex3 -->
+<h2>Order History</h2>
+@for (order of orders; track order.id) {
+  <p>
+    {{ order.orderDate }} - {{ order.productName }} ({{ order.qtyPurchased }})
+  </p>
+}
+

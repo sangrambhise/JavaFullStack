@@ -1,0 +1,8 @@
+<!-- Ex1 -->
+ <form>
+  <label>Name: <input [(ngModel)]="product.name" name="name"></label><br>
+  <label>Category: <input [(ngModel)]="product.category" name="category"></label><br>
+  <label>Price: <input [(ngModel)]="product.price" name="price" type="number"></label><br>
+  <label>Quantity: <input [(ngModel)]="product.qty" name="qty" type="number"></label><br>
+  <button (click)="add()">Add</button>
+</form>

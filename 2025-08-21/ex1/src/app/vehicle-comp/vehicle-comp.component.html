@@ -32,7 +32,7 @@
   <ul>
     @for (vehicle of vehicles; track vehicle.id) {
       <li>
-        {{ vehicle.make }} - {{ vehicle.model }} - {{ vehicle.fuelType }} - ${{ vehicle.price }}
+        {{ vehicle.make }} - {{ vehicle.model }} - {{ vehicle.fuelType }} - Rs.{{ vehicle.price }}
         <button (click)="onEdit(vehicle)">Edit</button>
         <button (click)="onDelete(vehicle.id)">Delete</button>
       </li>

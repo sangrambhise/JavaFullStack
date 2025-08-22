@@ -1,0 +1,19 @@
+<!-- EX1 -->
+<div>
+  <button (click)="addProduct()">Add Product</button>
+  @for (product of products; track product.id) {
+    <div>
+      <h4>
+        {{ product.name }} - {{ product.category }} - 
+        Rs.{{ product.price }} - 
+        Qty: {{ product.qty }}
+      </h4>
+      <a [routerLink]="['/edit', product.id]">Edit</a> |
+      <a [routerLink]="['/delete', product.id]">Delete</a> |
+      <a [routerLink]="['/purchase']">Purchase Product</a>
+    </div>
+  }
+  @if (products.length === 0) {
+    <p>No products found.</p>
+  }
+</div>
