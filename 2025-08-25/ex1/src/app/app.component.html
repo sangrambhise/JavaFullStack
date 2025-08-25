@@ -1,0 +1,102 @@
+<!-- Ex1 -->
+<h1>{{ title }}</h1>
+<mat-list>
+  @for (city of cities; track city) {
+    <mat-list-item>{{ city }}</mat-list-item>
+  }
+</mat-list>
+<br>
+
+<!-- Ex2 -->
+<mat-vertical-stepper>
+  <mat-step>
+    <ng-template matStepLabel>Name</ng-template>
+    <label>Name:</label><br>
+    <input [(ngModel)]="name"><br><br>
+    <button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Age</ng-template>
+    <label>Age:</label><br>
+    <input [(ngModel)]="age"><br><br>
+    <button matStepperPrevious>Back</button>
+    <button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Email</ng-template>
+    <label>Email:</label><br>
+    <input [(ngModel)]="email"><br><br>
+    <button matStepperPrevious>Back</button>
+    <button (click)="submit()">Submit</button>
+  </mat-step>
+</mat-vertical-stepper>
+<br>
+
+<!-- Ex3 -->
+ <input type="text" [formControl]="inputControl">
+<p>{{ reversedText }}</p>
+<br>
+
+<!-- Ex4 -->
+ <mat-vertical-stepper [linear]="true" [formGroup]="regForm">
+  <mat-step [stepControl]="regForm.get('name')!">
+    <ng-template matStepLabel>Name</ng-template>
+    <label>Name:</label><br>
+    <input type="text" formControlName="name"><br>
+        <!-- Ex5 -->
+       @if ((regForm.controls['name'].invalid) && (regForm.controls['name'].touched || regForm.controls['name'].dirty)) {
+      @if (regForm.controls['name'].errors?.['required']) {
+        <span style="color:red">Name is required</span>
+      }
+    }
+    <br><br>
+    <button matStepperNext [disabled]="regForm.get('name')?.invalid">Next</button>
+  </mat-step>
+  <mat-step [stepControl]="regForm.get('email')!">
+    <ng-template matStepLabel>Email</ng-template>
+    <label>Email:</label><br>
+    <input type="email" formControlName="email"><br>
+    <!-- Ex5 -->
+    @if ((regForm.controls['email'].invalid) && (regForm.controls['email'].touched || regForm.controls['email'].dirty)) {
+          @if (regForm.controls['email'].errors?.['required']) {
+            <span style="color:red">Email is required</span>
+          }
+          @if (regForm.controls['email'].errors?.['email']) {
+            <span style="color:red">Invalid email format</span>
+          }
+        }
+    <br><br>
+    <button matStepperPrevious>Back</button>
+    <button matStepperNext [disabled]="regForm.get('email')?.invalid">Next</button>
+  </mat-step>
+  <mat-step [stepControl]="regForm.get('dob')!">
+    <ng-template matStepLabel>Date of Birth</ng-template>
+    <label>Date of Birth:</label><br>
+    <input type="date" formControlName="dob"><br>
+    @if ((regForm.controls['dob'].invalid) && (regForm.controls['dob'].touched || regForm.controls['dob'].dirty)) {
+          @if (regForm.controls['dob'].errors?.['required']) {
+            <span style="color:red">Date of birth is required</span>
+          }
+        }
+    <br><br>
+    <button matStepperPrevious>Back</button>
+    <button matStepperNext [disabled]="regForm.get('dob')?.invalid">Next</button>
+  </mat-step>
+  <mat-step [stepControl]="regForm.get('subject')!">
+    <ng-template matStepLabel>Subject of Study</ng-template>
+    <label>Subject:</label><br>
+    <select formControlName="subject">
+      <option value="" disabled selected>Select subject</option>
+      <option *ngFor="let subj of subjects" [value]="subj">{{ subj }}</option>
+    </select><br>
+    <!-- Ex5 -->
+    @if ((regForm.controls['subject'].invalid) && (regForm.controls['subject'].touched || regForm.controls['subject'].dirty)) {
+      @if (regForm.controls['subject'].errors?.['required']) {
+        <span style="color:red">Subject is required</span>
+      }
+    }
+    <br><br>
+    <button matStepperPrevious>Back</button>
+    <button (click)="onSubmit()" [disabled]="regForm.get('subject')?.invalid">Submit</button>
+  </mat-step>
+</mat-vertical-stepper>
