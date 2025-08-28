@@ -1,0 +1,19 @@
+<div *ngIf="orders.length > 0">
+  <h3>Orders</h3>
+  <ul>
+    <li *ngFor="let order of orders">
+      <p>Order ID: {{ order.orderId }} | Total Price: {{ order.totalOrderPrice }} | Status: {{ order.orderStatus }}</p>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!orders.length">
+  <h3>No orders yet</h3>
+</div>
+
+<h3>Create a new order</h3>
+<form (submit)="createOrder()">
+  <input [(ngModel)]="newOrder.foodId" placeholder="Food ID" type="number" required />
+  <input [(ngModel)]="newOrder.orderQty" placeholder="Order Quantity" type="number" required />
+  <button type="submit">Create Order</button>
+</form>

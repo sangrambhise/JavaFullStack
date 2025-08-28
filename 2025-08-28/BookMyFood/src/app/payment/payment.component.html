@@ -1,0 +1,9 @@
+<h3>Make a Payment</h3>
+<form (submit)="makePayment()">
+  <input [(ngModel)]="payment.orderId" placeholder="Order ID" type="text" required />
+  <input [(ngModel)]="payment.totalOrderPrice" placeholder="Total Price" type="number" required />
+  <input [(ngModel)]="payment.modeOfPayment" placeholder="Mode of Payment" type="text" required />
+  <input [(ngModel)]="payment.accountNumber" placeholder="Account Number" type="text" required />
+  <input [(ngModel)]="payment.cvv" placeholder="CVV" type="number" required />
+  <button type="submit">Pay</button>
+</form>
