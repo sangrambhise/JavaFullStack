@@ -1,5 +1,5 @@
 export interface IOrder {
-  orderId: string;
+  id: string;
   foodId: number;
   orderQty: number;
   totalOrderPrice: number;

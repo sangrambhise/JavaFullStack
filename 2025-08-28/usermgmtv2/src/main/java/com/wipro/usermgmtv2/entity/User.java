@@ -19,15 +19,15 @@ public class User {
 	int id;
 	
 	@Column
-	String name;
+	String username;
 	
 	@Column
 	String email;
 	
 	@Column
-	String passWord;
+	String password;
 	
-	@Column
-	String salt;
+//	@Column
+//	String salt;
 
 }

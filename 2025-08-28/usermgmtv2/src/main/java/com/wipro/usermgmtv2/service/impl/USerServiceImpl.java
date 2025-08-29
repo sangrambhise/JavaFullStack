@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.AuthorityUtils;
@@ -21,7 +22,7 @@ import com.wipro.usermgmtv2.entity.User;
 import com.wipro.usermgmtv2.repo.UserRepo;
 import com.wipro.usermgmtv2.service.UserService;
 import com.wipro.usermgmtv2.util.AppConstant;
-import com.wipro.usermgmtv2.util.EncryptUtil;
+//import com.wipro.usermgmtv2.util.EncryptUtil;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -52,11 +53,23 @@ public class USerServiceImpl implements UserService {
 		return null;
 	}
 
+//	@Override
+//	public void save(User user) {
+//		// TODO Auto-generated method stub
+//		 String salt = BCrypt.gensalt();
+//	        String hashedPassword = EncryptUtil.getEncryptedPassword(user.getPassword(), salt);
+//	        user.setPassword(hashedPassword); 
+//	        user.setSalt(salt); 
+//	        userRepo.save(user); 
+//	}
+	
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
-		userRepo.save(user);
+	    String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+	    user.setPassword(hashedPassword);
+	    userRepo.save(user);
 	}
+
 
 	@Override
 	public void deleteById(int id) {
@@ -64,28 +77,41 @@ public class USerServiceImpl implements UserService {
 		userRepo.deleteById(id);
 	}
 
-	@Override
-	public Token login(User user) {
-		// TODO Auto-generated method stub
-		User userSalt=userRepo.findByEmail(user.getEmail());
-		
-		System.out.println("db salt="+userSalt);
-		String encrypTestPassword= EncryptUtil.getEncryptedPassword(user.getPassWord(),userSalt.getSalt());
-		User userData=userRepo.findByEmailAndPassWord(user.getEmail(),encrypTestPassword);
-		if(userData!=null)
-		{
-			String userId= String.valueOf(userData.getId());
+//	@Override
+//	public Token login(User user) {
+//		// TODO Auto-generated method stub
+//		User userSalt=userRepo.findByEmail(user.getEmail());
+//		
+//		System.out.println("db salt="+userSalt);
+//		if(userSalt!=null)
+//		{
+//			String encrypTestPassword= EncryptUtil.getEncryptedPassword(user.getPassword(),userSalt.getSalt());
+//			User userData=userRepo.findByEmailAndPassword(user.getEmail(),encrypTestPassword);
 //			System.out.println(getJWTToken(user.getEmail())); 
-			String jwtToken="Bearer " + getJWTToken(userId);
-			System.out.println("token="+jwtToken);
-			Token token=new Token();
-			token.setToken(jwtToken);
-			return token;
-		}
-		return null;
-	}
+//			if (userData != null) {
+//				String userId= String.valueOf(userData.getId());
+//				String jwtToken="Bearer " + getJWTToken(userId);
+//				System.out.println("token="+jwtToken);
+//				Token token=new Token();
+//				token.setToken(jwtToken);
+//				return token;
+//			}
+//		}
+//		return null;
+//	}
 	
-	
+	 @Override
+	    public Token login(User user) {
+	        User dbUser = userRepo.findByEmail(user.getEmail());
+	        if (dbUser != null && BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) {
+	            String userId = String.valueOf(dbUser.getId());
+	            String jwtToken = "Bearer " + getJWTToken(userId);
+	            Token token = new Token();
+	            token.setToken(jwtToken);
+	            return token;
+	        }
+	        return null;
+	    }
 
 	 private String getJWTToken(String userId) {
 	        Key key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(AppConstant.SECRET));

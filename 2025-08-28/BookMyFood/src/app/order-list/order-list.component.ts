@@ -3,22 +3,23 @@ import { OrderService } from '../service/order.service';
 import { IOrder } from '../interfaces/order';;
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../service/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order-list',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './order-list.component.html',
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent implements OnInit {
     orders: IOrder[] = [];
   newOrder: IOrder = {
-    orderId: '',
     foodId: 0,
     orderQty: 0,
     totalOrderPrice: 0,
     orderStatus: 0,
-    userId: 0
+    userId: 0,
+    id: ''
   };
 
   constructor(private orderService: OrderService, private authService: AuthService) {}
@@ -40,7 +41,7 @@ export class OrderListComponent implements OnInit {
     this.orderService.createOrder(this.newOrder).subscribe((order) => {
       this.orders.push(order);
       this.newOrder = {
-        orderId: '',
+        id: '',
         foodId: 0,
         orderQty: 0,
         totalOrderPrice: 0,

@@ -10,20 +10,27 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
 
-  credentials = { username: '', password: '' };
+
+  credentials = { email: '', password: '' }; 
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  login(): void {
-    this.authService.login(this.credentials).subscribe(
-      response => {
-        this.authService.setToken(response.token); // Assuming the token is returned as "token"
-        console.log('Login successful!');
-        this.router.navigate(['/foods']); // Redirect to orders page after successful login
-      },
-      error => {
-        console.error('Login failed', error);
-      }
-    );
+login(): void {
+  this.authService.login(this.credentials).subscribe({
+  next: (response) => {
+    if (response && response.token) {
+      this.authService.setToken(response.token);
+      console.log('Login successful!');
+      this.router.navigate(['/foods']);
+    } else {
+      console.error('Login failed: No token received');
+      alert('Login failed: Invalid credentials');
+    }
+  },
+  error: (error) => {
+    console.error('Login failed', error);
+    alert('Login failed: Server error');
   }
+});
+}
 }

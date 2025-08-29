@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../service/order.service';
 import { IPayment } from '../interfaces/payment';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-payment',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })

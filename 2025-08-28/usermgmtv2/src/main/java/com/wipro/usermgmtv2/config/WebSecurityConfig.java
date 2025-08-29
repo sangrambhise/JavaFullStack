@@ -17,14 +17,12 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-        	.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-
-            .csrf(csrf -> csrf.disable())
-                       .authorizeHttpRequests(
-            	        auth -> auth.requestMatchers("/user/login/**").permitAll()
-                       .anyRequest().authenticated()
-            ) 
-           
-            .build();
+        		.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/user/login", "/user/register").permitAll() 
+                    .anyRequest().authenticated() 
+                )
+                .build();
     }
 }

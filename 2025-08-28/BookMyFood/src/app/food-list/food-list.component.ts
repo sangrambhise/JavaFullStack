@@ -5,9 +5,10 @@ import { CommonModule } from '@angular/common';
 import { OrderService } from '../service/order.service';
 import { Router } from '@angular/router';
 import { IOrder } from '../interfaces/order';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-food-list',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './food-list.component.html',
   styleUrl: './food-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,10 +29,14 @@ export class FoodListComponent implements OnInit {
 
   ngOnInit() {
     this.foodService.getAllFoods().subscribe((data) => {
+      console.log('Food Data:', data);
       this.foodList = data;
       this.foodList.forEach((food) => this.foodMap.set(food.id!, 1));
       this.cdr.markForCheck();
-    });
+    },
+  (error) => {
+    console.error('Error fetching foods:', error);  
+  });
   }
 
   changeQuantity(foodId: number) {
@@ -41,11 +46,15 @@ export class FoodListComponent implements OnInit {
   async orderFood(foodId: number) {
     const orderData: IOrder = {
       foodId: foodId,
-      orderQty: this.foodMap.get(foodId) || 1
+      orderQty: this.foodMap.get(foodId) || 1,
+      id: '',
+      totalOrderPrice: 0,
+      orderStatus: 0,
+      userId: 0
     };
 
     this.orderService.save(orderData).subscribe((result: IOrder) => {
-      this.router.navigate(['/payment', result.id, result.totalOrderPrice]);  // Navigate to payment
+      this.router.navigate(['/payment', result.id, result.totalOrderPrice]); 
     });
   }
 }

@@ -34,7 +34,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
         try {
         	 
-        	if (request.getRequestURI().equals("/user/login")) {
+        	if (request.getRequestURI().equals("/user/register") || request.getRequestURI().equals("/user/login")) {
         		System.out.println("--allowed--");	
                 chain.doFilter(request, response);
                 return;

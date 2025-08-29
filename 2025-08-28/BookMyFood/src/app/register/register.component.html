@@ -1,6 +1,48 @@
 <h3>Register</h3>
-<form (submit)="register()">
-  <input [(ngModel)]="user.username" placeholder="Username" type="text" required />
-  <input [(ngModel)]="user.password" placeholder="Password" type="password" required />
-  <button type="submit">Register</button>
+<form (submit)="register()" #registerForm="ngForm" novalidate>
+  <input 
+    [(ngModel)]="user.username" 
+    name="username" 
+    type="text" 
+    placeholder="Username" 
+    required 
+    #username="ngModel" 
+  />
+  <div *ngIf="username.invalid && username.touched" class="error">
+    Username is required.
+  </div>
+
+  <input 
+    [(ngModel)]="user.email" 
+    name="email" 
+    type="email" 
+    placeholder="Email" 
+    required 
+    #email="ngModel" 
+  />
+  <div *ngIf="email.invalid && email.touched" class="error">
+    Email is required.
+  </div>
+
+  <input 
+    [(ngModel)]="user.password" 
+    name="password" 
+    type="password" 
+    placeholder="Password" 
+    required 
+    #password="ngModel"
+  />
+  <div *ngIf="password.invalid && password.touched" class="error">
+    Password is required.
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
 </form>
+
+<div *ngIf="successMessage" class="success">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
