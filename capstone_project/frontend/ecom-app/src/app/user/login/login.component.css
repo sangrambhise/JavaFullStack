@@ -1,0 +1,27 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+.card {
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.btn-primary {
+  font-weight: 600;
+}
+
+input.form-control {
+  height: 45px;
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+.app-footer {
+  margin-top: auto;
+}

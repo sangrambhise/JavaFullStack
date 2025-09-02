@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <h2>Create Order</h2>
+
+  <form [formGroup]="orderForm" (ngSubmit)="addToCart()">
+    <div class="mb-3">
+      <label class="form-label">Product</label>
+      <select class="form-select" formControlName="productId">
+        <option value="">Select a product</option>
+        <option *ngFor="let prod of products" [value]="prod.id">
+          {{ prod.prodName }} (Available: {{ prod.availableQty }})
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Quantity</label>
+      <input type="number" class="form-control" formControlName="quantity">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add to Cart</button>
+  </form>
+
+  <h3 class="mt-4">Cart</h3>
+  <table class="table table-bordered" *ngIf="cartItems.length > 0">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+  <td>{{ item.productName }}</td>
+  <td>
+    <input type="number" #qtyInput [value]="item.quantity"
+           (change)="updateCartItem(item.id, qtyInput.valueAsNumber)">
+  </td>
+  <td>
+    <button class="btn btn-danger btn-sm" (click)="removeCartItem(item.id)">Remove</button>
+  </td>
+</tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success mt-2" (click)="checkout()" [disabled]="cartItems.length === 0">Place Order</button>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-2">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+</div>

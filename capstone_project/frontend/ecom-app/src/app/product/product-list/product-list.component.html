@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Products</h2>
+
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Search by Category"
+             [(ngModel)]="filters.category" (input)="applyFilters()">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Search by Description"
+             [(ngModel)]="filters.description" (input)="applyFilters()">
+    </div>
+    <div class="col-md-3">
+      <input type="number" class="form-control" placeholder="Max Price"
+             [(ngModel)]="filters.price" (input)="applyFilters()">
+    </div>
+  </div>
+
+  <div class="mb-3" *ngIf="user?.userType === 0">
+    <a routerLink="/product/create" class="btn btn-success">Create New Product</a>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let product of paginatedProducts">
+      <div class="card h-100">
+        <img *ngIf="product.imageURL" [src]="product.imageURL" class="card-img-top" alt="{{ product.prodName }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.prodName }}</h5>
+          <p class="card-text text-truncate">{{ product.prodDesc || 'No description' }}</p>
+          <p class="mb-1"><strong>Price:</strong> ${{ product.price }}</p>
+          <p class="mb-1"><strong>Available:</strong> {{ product.availableQty }} {{ product.uom }}</p>
+          <p class="mb-1"><strong>Category:</strong> {{ product.prodCat }}</p>
+          <p class="mb-1"><strong>Rating:</strong> {{ product.prodRating || 0 }}/5</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-primary btn-sm" [routerLink]="['/product/edit', product.id]">View / Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Delete</button>
+          <button *ngIf="user?.userType === 1" class="btn btn-success btn-sm" (click)="addToCart(product.id)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="mt-3">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of totalPagesArray" [class.active]="page === currentPage">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>

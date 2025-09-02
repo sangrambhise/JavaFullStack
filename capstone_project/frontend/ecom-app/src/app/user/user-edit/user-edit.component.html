@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <h2>{{ userId ? 'Edit User' : 'Create User' }}</h2>
+
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input id="firstName" type="text" formControlName="firstName" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input id="lastName" type="text" formControlName="lastName" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="emailId" class="form-label">Email</label>
+      <input id="emailId" type="email" formControlName="emailId" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="userId" class="form-label">User ID</label>
+      <input id="userId" type="text" formControlName="userId" class="form-control">
+    </div>
+
+    <div class="mb-3" *ngIf="!userId">
+      <label for="passWord" class="form-label">Password</label>
+      <input id="passWord" type="password" formControlName="passWord" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea id="address" formControlName="address" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="userType" class="form-label">User Type</label>
+      <select id="userType" formControlName="userType" class="form-select">
+        <option [value]="0">Admin</option>
+        <option [value]="1">Customer</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">{{ userId ? 'Update' : 'Create' }}</button>
+  </form>
+</div>
